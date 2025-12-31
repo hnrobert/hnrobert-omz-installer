@@ -122,6 +122,19 @@ configure_zshrc() {
 	# Ensure base file exists
 	touch "$zshrc"
 
+	# Disable Oh My Zsh auto-updates to avoid background prompts
+	if grep -q "^DISABLE_AUTO_UPDATE=" "$zshrc"; then
+		sed -i 's|^DISABLE_AUTO_UPDATE=.*|DISABLE_AUTO_UPDATE="true"|' "$zshrc"
+	else
+		echo 'DISABLE_AUTO_UPDATE="true"' >>"$zshrc"
+	fi
+
+	if grep -q "^DISABLE_UPDATE_PROMPT=" "$zshrc"; then
+		sed -i 's|^DISABLE_UPDATE_PROMPT=.*|DISABLE_UPDATE_PROMPT="true"|' "$zshrc"
+	else
+		echo 'DISABLE_UPDATE_PROMPT="true"' >>"$zshrc"
+	fi
+
 	if grep -q "^ZSH_THEME=" "$zshrc"; then
 		sed -i 's|^ZSH_THEME=.*|ZSH_THEME="powerlevel10k/powerlevel10k"|' "$zshrc"
 	else

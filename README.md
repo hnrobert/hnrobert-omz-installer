@@ -5,10 +5,10 @@ Automated installer for Zsh + Oh My Zsh + zsh-autosuggestions + zsh-syntax-highl
 ## What it does
 
 - Installs dependencies (zsh, git, curl, wget, fonts, locales)
-- Installs Oh My Zsh (unattended)
+- Installs Oh My Zsh (unattended) **with auto-update disabled**
 - Installs plugins: zsh-autosuggestions, zsh-syntax-highlighting
 - Installs Powerlevel10k theme and copies the provided `.p10k.zsh` to your home
-- Updates `~/.zshrc` to use the theme and plugins
+- Updates `~/.zshrc` to use the theme and plugins (also sets `DISABLE_AUTO_UPDATE` and `DISABLE_UPDATE_PROMPT`)
 - Switches your default login shell to `zsh`
 - Prompts to reboot (skipped automatically inside containers)
 
