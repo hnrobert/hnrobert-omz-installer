@@ -17,7 +17,7 @@ Automated installer for Zsh + Oh My Zsh + zsh-autosuggestions + zsh-syntax-highl
 > Make sure you are connected to the internet where `raw.githubusercontent.com` is reachable.
 
 ```bash
-# Copy this and paste in your bash, and run it, and the installation will run automatically
+# Copy & paste in your bash, Enter, and the installation will run automatically
 curl -fsSL https://raw.githubusercontent.com/hnrobert/automz/main/install.sh | bash
 ```
 
