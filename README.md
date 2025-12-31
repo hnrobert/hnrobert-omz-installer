@@ -17,19 +17,17 @@ Automated installer for Zsh + Oh My Zsh + zsh-autosuggestions + zsh-syntax-highl
 You do not need to clone the repo. Download and run the installer directly; it will fetch the required `.p10k.zsh` automatically.
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/hnrobert/hnrobert-omz-installer/main/install.sh -o install.sh
-chmod +x install.sh
-./install.sh
+curl -fsSL https://raw.githubusercontent.com/hnrobert/hnrobert-omz-installer/main/install.sh | bash
 ```
 
 The script installs needed dependencies (git, curl, etc.) if they are missing. When finished, it asks whether to reboot. You can also run `exec zsh` or open a new terminal session.
 
 ## Test inside a container (Ubuntu 22.04)
 
-The included compose file starts an Ubuntu 22.04 container, mounts the repo, and runs the installer via entrypoint.
+The compose file uses the upstream `ubuntu:22.04`, creates a non-root user `dev`, installs `sudo`, runs the installer as `dev`, and leaves you in `zsh`.
 
 ```bash
-docker-compose up -d # build flag is harmless with no Dockerfile present
+docker-compose up -d
 docker-compose exec hnrobert-omz-installer-test zsh
 ```
 

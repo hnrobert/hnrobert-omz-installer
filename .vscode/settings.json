@@ -4,6 +4,7 @@
         "fontconfig",
         "Meslo",
         "noninteractive",
+        "NOPASSWD",
         "Powerlevel",
         "RUNZSH",
         "xterm"

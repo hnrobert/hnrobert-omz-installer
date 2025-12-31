@@ -1,5 +1,3 @@
-version: "3.8"
-
 services:
   hnrobert-omz-installer-test:
     image: ubuntu:22.04
@@ -12,9 +10,15 @@ services:
     environment:
       - DEBIAN_FRONTEND=noninteractive
       - TERM=xterm-256color
-    entrypoint:
-      [
+    entrypoint: [
         "/bin/bash",
         "-lc",
-        "chmod +x /workspace/install.sh && /workspace/install.sh && exec /bin/zsh -i",
+        "set -e; \
+        apt-get update; \
+        apt-get install -y sudo; \
+        id -u dev >/dev/null 2>&1 || useradd -m -s /bin/bash dev; \
+        echo 'dev ALL=(ALL) NOPASSWD:ALL' > /etc/sudoers.d/dev; \
+        chmod +x /workspace/install.sh; \
+        su - dev -c 'cd /workspace && ./install.sh'; \
+        exec su - dev -c '/bin/zsh -i'",
       ]
