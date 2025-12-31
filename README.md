@@ -12,19 +12,21 @@ Automated installer for Zsh + Oh My Zsh + zsh-autosuggestions + zsh-syntax-highl
 - Switches your default login shell to `zsh`
 - Prompts to reboot (skipped automatically inside containers)
 
-## Usage on a host (Ubuntu/Debian)
+## Usage on a host (Ubuntu/Debian) - One command install
 
-You do not need to clone the repo. Download and run the installer directly; it will fetch the required `.p10k.zsh` automatically.
+> Make sure you are connected to the internet where `raw.githubusercontent.com` is reachable.
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/hnrobert/hnrobert-omz-installer/main/install.sh | bash
 ```
 
-The script installs needed dependencies (git, curl, etc.) if they are missing. When finished, it asks whether to reboot. You can also run `exec zsh` or open a new terminal session.
+The script installs needed dependencies (git, curl, etc.) if they are missing. You can also run `exec zsh` or open a new terminal session.
+
+You do not need to clone the repo, it will fetch the required `.p10k.zsh` automatically.
 
 ## Test inside a container (Ubuntu 22.04)
 
-The compose file uses upstream `ubuntu:22.04`, creates non-root user `dev`, installs `sudo`, and runs the installer as `dev` **only once**. The container then idles.
+The compose file uses upstream `ubuntu:22.04`, creates non-root user `dev`, installs `sudo`, and runs the installer as `dev`. The container then idles.
 
 Start and view logs:
 
@@ -32,7 +34,7 @@ Start and view logs:
 docker-compose up -d && docker-compose logs -f
 ```
 
-After startup, attach to zsh as `dev`:
+When the instruction `[SUCCESS] All done.` appears and the container idles, you may attach to zsh as `dev` and start trying it out:
 
 ```bash
 docker-compose exec --user dev hnrobert-omz-installer-test zsh
